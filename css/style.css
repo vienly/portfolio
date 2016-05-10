@@ -1,0 +1,154 @@
+body {
+  font-family: 'Fanwood Text', serif;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  position: relative;
+  transition: all 0.5s ease-out;
+}
+
+.wrapper.active {
+  left: 16em;
+}
+
+/*NAV BAR*/
+a.menu-link {
+  text-align: center;
+  float: left;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+a.menu-link button {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .4em;
+  margin: .4em;
+  background-color: rgba(0, 0, 0 , 0.8);
+  border: none;
+}
+
+a.menu-link button {
+  outline: none;
+}
+
+nav[role=navigation] {
+  /*background-color: #4e081b;*/
+  background-color: rgba(0, 0, 0, 0.8);
+  clear: both;
+  overflow: hidden;
+
+  width: 16em;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -16em;
+
+  /*border-top: 1px solid #fff;
+  border-right: 1px solid #fff;*/
+}
+
+nav[role=navigation] ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+nav[role=navigation] li a {
+  display: block;
+  padding: 0.8em;
+  color: #fff;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  /*border-bottom: 1px solid #fff;*/
+}
+
+/*END NAV BAR*/
+
+/*BODY*/
+.lorem {
+  clear: both;
+  margin: 0.5em;
+}
+
+.lorem p, img {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.content-block {
+  margin-top: 2em;
+  margin-bottom: 3em;
+}
+/*END BODY*/
+
+/*HR*/
+hr {
+  border: 0;
+  height: 1px;
+  background: #000;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/*MEDIA DEPENDENCIES*/
+@media screen and (min-width: 640px) {
+  a.menu-link {
+    display: none;
+  }
+
+  nav[role=navigation] {
+    max-width: none;
+    position: static;
+    width: auto;
+  }
+
+  .wrapper.active {
+    left: 0;
+  }
+
+  nav[role=navigation] ul {
+    margin: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  nav[role=navigation] li {
+    display: inline-block;
+    margin: 0 0.25em;
+  }
+
+  nav[role=navigation] li a {
+    border: 0;
+  }
+
+  .lorem img {
+    display: inline-block;
+    max-width: 48%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-one img {
+    float: left;
+    margin-right: 1em;
+  }
+
+  .section-two img {
+    float: right;
+    margin-left: 1em;
+  }
+
+  .section-three img {
+    float: left;
+    margin-right: 1em;
+  }
+}
+/*END MEDIA DEPENDENCIES*/
