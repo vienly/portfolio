@@ -2,11 +2,11 @@ body {
   font-family: 'Fanwood Text', serif;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .wrapper {
   position: absolute;
-  /*margin: 0 auto;*/
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -86,7 +86,7 @@ nav[role=navigation] li a {
 }
 
 .content-block {
-  /*display: block;*/
+  display: block;
   margin-top: 1em;
   margin-bottom: 2em;
   text-align: justify;
@@ -133,7 +133,7 @@ hr {
   }
 
   .lorem img {
-    display: inline-block;
+    display: block;
     max-width: 50%;
     margin: 0;
     padding: 0;
