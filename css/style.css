@@ -81,8 +81,9 @@ nav[role=navigation] li a {
 }
 
 .content-block {
-  margin-top: 2em;
-  margin-bottom: 3em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  text-align: justify;
 }
 /*END BODY*/
 
@@ -130,6 +131,10 @@ hr {
     max-width: 48%;
     margin: 0;
     padding: 0;
+  }
+
+  .content-block {
+    height: 100vh;
   }
 
   .section-one img {
