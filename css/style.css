@@ -5,7 +5,8 @@ body {
 }
 
 .wrapper {
-  position: relative;
+  /*position: absolute;*/
+  margin: 0 auto;
   transition: all 0.5s ease-out;
 }
 
@@ -97,6 +98,10 @@ hr {
 
 /*MEDIA DEPENDENCIES*/
 @media screen and (min-width: 640px) {
+  .wrapper {
+    width: 80vw;
+  }
+
   a.menu-link {
     display: none;
   }
@@ -134,22 +139,26 @@ hr {
   }
 
   .content-block {
-    height: 100vh;
+    height: 90vh;
+    display: block;
   }
 
   .section-one img {
     float: left;
     margin-right: 1em;
+    max-height: 90%;
   }
 
   .section-two img {
     float: right;
     margin-left: 1em;
+    max-height: 90%;
   }
 
   .section-three img {
     float: left;
     margin-right: 1em;
+    max-height: 90%;
   }
 }
 /*END MEDIA DEPENDENCIES*/
