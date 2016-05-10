@@ -82,6 +82,7 @@ nav[role=navigation] li a {
 }
 
 .content-block {
+  display: block;
   margin-top: 1em;
   margin-bottom: 2em;
   text-align: justify;
@@ -133,32 +134,32 @@ hr {
 
   .lorem img {
     display: inline-block;
-    max-width: 48%;
+    max-width: 50%;
     margin: 0;
     padding: 0;
   }
 
   .content-block {
-    height: 90vh;
-    display: block;
+    display: inline-block;
+    height: auto;
   }
 
   .section-one img {
     float: left;
     margin-right: 1em;
-    max-height: 90%;
+    /*max-height: 30vh;*/
   }
 
   .section-two img {
     float: right;
     margin-left: 1em;
-    max-height: 90%;
+    /*max-height: 300px;*/
   }
 
   .section-three img {
     float: left;
     margin-right: 1em;
-    max-height: 90%;
+    /*max-height: 30vh;*/
   }
 }
 /*END MEDIA DEPENDENCIES*/
