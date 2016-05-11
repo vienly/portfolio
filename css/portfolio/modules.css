@@ -41,20 +41,35 @@ nav[role=navigation] {
 }
 
 nav[role=navigation] ul {
-  margin: 0;
+  margin: 5px 0 5px 0;
   padding: 0;
   text-align: left;
 }
 
 nav[role=navigation] li a {
   display: block;
-  padding: 0.8em;
+  padding: 0.4em 1em;
   color: #fff;
 
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
+
+  border: 0;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+nav[role=navigation] li a {
+
+}
+
+nav[role=navigation] li a:hover {
+  /*text-decoration: underline;*/
+  border-top: 2px solid crimson;
+  border-bottom: 2px solid crimson;
+
 }
 
 .articles {
@@ -64,7 +79,7 @@ nav[role=navigation] li a {
 
 /*header block so paragraph flow below section date and not picture*/
 .content-block header {
-  display: block;
+  display: inline-block;
 }
 
 .articles h1 {
@@ -113,22 +128,14 @@ nav[role=navigation] li a {
   }
 
   nav[role=navigation] ul {
-    margin: 0;
-    border: 0;
-    text-align: left;
+    /*margin: 0;
+    padding: 0;
+    border: 0;*/
   }
 
   nav[role=navigation] li {
     display: inline-block;
     margin: 0 0.25em;
-  }
-
-  nav[role=navigation] li a {
-    border: 0;
-  }
-
-  nav[role=navigation] li a:hover {
-    text-decoration: underline;
   }
 
   .content-block {
