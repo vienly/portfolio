@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var $menu = $('#menu'), $menulink = $('.menu-link'), $wrapper = $('#wrapper');
 
-  $menulink.click(function() {
+  $menulink.on('click', function() {
     console.log('active');
     $menulink.toggleClass('active');
     $wrapper.toggleClass('active');

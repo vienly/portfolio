@@ -57,8 +57,8 @@ nav[role=navigation] li a {
   text-decoration: none;
 
   border: 0;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
 }
 
 nav[role=navigation] li a {
@@ -67,8 +67,8 @@ nav[role=navigation] li a {
 
 nav[role=navigation] li a:hover {
   /*text-decoration: underline;*/
-  border-top: 2px solid crimson;
-  border-bottom: 2px solid crimson;
+  border-top: 3px solid crimson;
+  border-bottom: 3px solid crimson;
 
 }
 
