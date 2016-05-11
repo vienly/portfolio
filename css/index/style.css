@@ -1,7 +1,11 @@
-body {
+* {
   font-family: 'Fanwood Text', serif;
+  font-size: 18px;
   margin: 0;
   padding: 0;
+}
+
+body {
   position: relative;
 }
 
@@ -101,6 +105,10 @@ hr {
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
 }
 
+.lorem h1 {
+  display: inline-block;
+}
+
 /*MEDIA DEPENDENCIES*/
 @media screen and (min-width: 640px) {
   a.menu-link {
@@ -130,6 +138,10 @@ hr {
 
   nav[role=navigation] li a {
     border: 0;
+  }
+
+  nav[role=navigation] li a:hover {
+    text-decoration: underline;
   }
 
   .lorem img {
@@ -163,4 +175,14 @@ hr {
     /*max-height: 30vh;*/
   }
 }
+
+.active-page {
+  color: crimson !important;
+}
+
+.menu-link.active {
+  color: crimson;
+}
+
+
 /*END MEDIA DEPENDENCIES*/
