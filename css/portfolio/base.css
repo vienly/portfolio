@@ -1,0 +1,32 @@
+* {
+  font-family: 'Fanwood Text', serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  transition: all 0.5s ease-out;
+  width: 90vw;
+}
+
+p, img {
+  max-width: 100%;
+}
+
+.articles h1, .section-date {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+}
+
+.articles h1 {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.section-date {
+  font-size: 12px;
+  text-decoration: underline;
+}

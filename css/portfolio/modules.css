@@ -1,0 +1,159 @@
+img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+}
+
+a.menu-link {
+  text-align: center;
+  float: left;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+a.menu-link button {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: .4em;
+  margin: .4em;
+  background-color: rgba(0, 0, 0 , 0.8);
+  border: none;
+}
+
+a.menu-link button {
+  outline: none;
+}
+
+nav[role=navigation] {
+  background-color: rgba(0, 0, 0, 0.8);
+  clear: both;
+  overflow: hidden;
+
+  width: 16em;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -18em;
+}
+
+nav[role=navigation] ul {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+nav[role=navigation] li a {
+  display: block;
+  padding: 0.8em;
+  color: #fff;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.articles {
+  clear: both;
+  margin: 0.5em;
+}
+
+/*header block so paragraph flow below section date and not picture*/
+.content-block header {
+  display: block;
+}
+
+.articles h1 {
+  display: inline-block;
+}
+
+.articles .section-body {
+  display: inline;
+}
+
+.content-block {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid black;
+}
+
+.content-block .section-date {
+  display: block;
+}
+
+.content-block p {
+  text-align: justify;
+}
+
+/*MEDIA DEPENDENCIES*/
+@media screen and (min-width: 640px) {
+  a.menu-link {
+    display: none;
+  }
+
+  nav[role=navigation] {
+    max-width: none;
+    position: static;
+    width: auto;
+  }
+
+  .articles h1 {
+    margin-top: 0;
+    /*width: 41.5vw;*/
+  }
+
+  .wrapper.active {
+    left: 0;
+  }
+
+  nav[role=navigation] ul {
+    margin: 0;
+    border: 0;
+    text-align: left;
+  }
+
+  nav[role=navigation] li {
+    display: inline-block;
+    margin: 0 0.25em;
+  }
+
+  nav[role=navigation] li a {
+    border: 0;
+  }
+
+  nav[role=navigation] li a:hover {
+    text-decoration: underline;
+  }
+
+  .content-block {
+    display: inline-block;
+    clear: none;
+    height: auto;
+  }
+
+  .content-block img {
+    display: block;
+    width: 37vw;
+    float: left;
+    margin-right: 1em;
+    margin-bottom: .5em;
+  }
+}
+
+.active-page {
+  color: crimson !important;
+}
+
+.menu-link.active {
+  color: crimson;
+}
+
+.template {
+  display: none;
+}
