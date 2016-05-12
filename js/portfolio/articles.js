@@ -17,6 +17,8 @@ Article.prototype.toHtml = function() {
   var dateline = this.pubDate + ' (about ' + parseInt((new Date() - new Date(this.pubDate))/60/60/24/1000) + ' days ago)';
 
   $newArticle.attr('data-category', this.category);
+  $newArticle.attr('data-date', this.pubDate);
+
 
   $newArticle.find('.section-image').attr('src', this.img);
   $newArticle.find('.section-title').text(this.ttl);

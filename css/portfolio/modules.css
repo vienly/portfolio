@@ -172,3 +172,29 @@ nav[role=navigation] li a:hover {
 .template {
   display: none;
 }
+
+.read-on {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .75em;
+  text-transform: uppercase;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+
+.filters li {
+  display: inline-block;
+  margin: .25em;
+  margin-left: 0;
+}
+
+.ny {
+  margin: 0 auto;
+}
+
+.about img {
+  max-width: 35vw;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: .5em;
+}
