@@ -187,3 +187,14 @@ nav[role=navigation] li a:hover {
   margin: .25em;
   margin-left: 0;
 }
+
+.ny {
+  margin: 0 auto;
+}
+
+.about img {
+  max-width: 35vw;
+  float: left;
+  margin-right: 1em;
+  margin-bottom: .5em;
+}

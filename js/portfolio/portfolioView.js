@@ -93,6 +93,8 @@ portfolioView.handleMainNav = function() {
 
   $('nav').on('click', '.tab', function(e) {
     e.preventDefault();
+    $('.tab').removeClass('active-page');
+    $(this).addClass('active-page');
     $('.tab-content').hide();
 
     var tabName = $(this).data('content');
