@@ -112,6 +112,14 @@ nav[role=navigation] li a:hover {
     display: none;
   }
 
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
   nav[role=navigation] {
     max-width: none;
     position: static;

@@ -2,6 +2,11 @@
   clear: both;
 }
 
+main {
+  display: block;
+  margin-top: 3em;
+}
+
 body {
   position: relative;
 }

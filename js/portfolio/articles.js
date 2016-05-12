@@ -20,7 +20,9 @@ Article.prototype.toHtml = function() {
 
   $newArticle.find('.section-image').attr('src', this.img);
   $newArticle.find('.section-title').text(this.ttl);
+  $newArticle.find('.section-date').data('date', this.pubDate);
   $newArticle.find('.section-date').text(dateline);
+
   $newArticle.find('.section-body').html(this.bdy);
 
   $newArticle.removeClass('template');
