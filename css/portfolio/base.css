@@ -12,6 +12,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .wrapper {
   transition: all 0.5s ease-out;
   width: 90vw;
@@ -21,7 +25,7 @@ p, img {
   max-width: 100%;
 }
 
-.articles h1, .section-date{
+.articles h1, time{
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
@@ -31,11 +35,10 @@ p, img {
   font-size: 1.5em;
 }
 
-.section-date {
+time {
   font-size: .75em;
   text-decoration: underline;
 }
-
 
 select {
   border: 1px solid black;

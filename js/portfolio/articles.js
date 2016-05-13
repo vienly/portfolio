@@ -1,8 +1,6 @@
 var articles = [];
 
 function Article (opts) {
-  // TODO: Use the js object passed in to complete this contructor function:
-  // Save ALL the properties of `opts` into `this`.
   this.ttl = opts.ttl;
   this.category = opts.category;
   this.author = opts.author;
@@ -10,26 +8,31 @@ function Article (opts) {
   this.img = opts.img;
   this.pubDate = opts.pubDate;
   this.bdy = opts.bdy;
+  this.year = opts.year;
 }
 
 Article.prototype.toHtml = function() {
-  var $newArticle = $('article.template').clone();
-  var dateline = this.pubDate + ' (about ' + parseInt((new Date() - new Date(this.pubDate))/60/60/24/1000) + ' days ago)';
 
-  $newArticle.attr('data-category', this.category);
-  $newArticle.attr('data-date', this.pubDate);
+  // this.year = new Date(this.pubDate).getFullYear();
+  // console.log(this.year);
+  this.daysAgo = parseInt((new Date() - new Date(this.pubDate))/60/60/24/1000);
+  this.publishStatus = this.pubDate ? 'published about ' + this.daysAgo + ' days ago' : '(draft)';
 
+  var $source = $('#article-template').html();
+  var template = Handlebars.compile($source);
+  return template(this);
+};
 
-  $newArticle.find('.section-image').attr('src', this.img);
-  $newArticle.find('.section-title').text(this.ttl);
-  $newArticle.find('.section-date').data('date', this.pubDate);
-  $newArticle.find('.section-date').text(dateline);
+Article.prototype.populateDateFilter = function(){
+  var $source = $('#date-filter-template').html();
+  var template = Handlebars.compile($source);
+  return template(this);
+};
 
-  $newArticle.find('.section-body').html(this.bdy);
-
-  $newArticle.removeClass('template');
-
-  return $newArticle;
+Article.prototype.populateCategoryFilter = function(){
+  var $source = $('#category-filter-template').html();
+  var template = Handlebars.compile($source);
+  return template(this);
 };
 
 myPortfolioData.sort(function(a,b) {
@@ -42,4 +45,11 @@ myPortfolioData.forEach(function(ele) {
 
 articles.forEach(function(a){
   $('#articles').append(a.toHtml());
+  $('#date-filter').append(a.populateDateFilter());
+  $('#category-filter').append(a.populateCategoryFilter());
+
+  $('.filter option').each(function(){
+    $(this).siblings('[value="' + this.value + '"]').remove();
+  });
+
 });
