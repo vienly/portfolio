@@ -17,7 +17,6 @@ Article.prototype.toHtml = function() {
   // console.log(this.year);
   this.daysAgo = parseInt((new Date() - new Date(this.pubDate))/60/60/24/1000);
   this.publishStatus = this.pubDate ? 'published about ' + this.daysAgo + ' days ago' : '(draft)';
-
   var $source = $('#article-template').html();
   var template = Handlebars.compile($source);
   return template(this);

@@ -1,9 +1,9 @@
 * {
   /*font-family: 'Fanwood Text', serif;*/
-  font-family: 'Esteban', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   /*font-family: 'Alegreya Sans', sans-serif;*/
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: black;
   margin: 0;
   padding: 0;
@@ -14,11 +14,6 @@
 
 .clearfix {
   clear: both;
-}
-
-.wrapper {
-  transition: all 0.5s ease-out;
-  width: 90vw;
 }
 
 p, img {
@@ -32,11 +27,11 @@ p, img {
 
 .articles h1 {
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
 time {
-  font-size: .75em;
+  font-size: .75rem;
   text-decoration: underline;
 }
 
