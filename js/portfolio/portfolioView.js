@@ -67,7 +67,7 @@ portfolioView.setTeasers = function() {
 
   $('article').on('click', '.read-on', function(e) {
     e.preventDefault();
-    $self = $(this);
+    var $self = $(this);
     if ($(this).hasClass('show-less')) {
       $self.parent().find('.section-body *:nth-of-type(n+2)').slideUp();
       $self.toggleClass('show-less');
