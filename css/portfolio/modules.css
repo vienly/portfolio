@@ -178,7 +178,9 @@ nav[role=navigation] li a:hover {
   font-size: .75em;
   text-transform: uppercase;
   padding: 5px;
-  border: 1px solid black;
+  color: white;
+  background: black;
+  border-radius: 3px;
 }
 
 

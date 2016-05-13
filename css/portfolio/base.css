@@ -1,12 +1,15 @@
 * {
-  font-family: 'Fanwood Text', serif;
-  font-size: 18px;
+  /*font-family: 'Fanwood Text', serif;*/
+  font-family: 'Esteban', serif;
+  /*font-family: 'Alegreya Sans', sans-serif;*/
+  font-size: 16px;
   line-height: 1.5;
   color: black;
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
+  -webkit-font-smoothing: antialiased;
 }
 
 .wrapper {
@@ -25,7 +28,7 @@ p, img {
 
 .articles h1 {
   font-weight: 700;
-  font-size: 1.25em;
+  font-size: 1.5em;
 }
 
 .section-date {
