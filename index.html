@@ -10,7 +10,28 @@
     <link rel="stylesheet" type="text/css" href="css/portfolio/modules.css">
 
     <!-- <link rel="stylesheet" type="text/css" href="css/index/style.css"> -->
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Fanwood+Text|Esteban|Alegreya+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Fanwood+Text|Esteban|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
+    <script id="date-filter-template" type="text/x-handlebars-template">
+      <option value="{{year}}">{{year}}</option>
+    </script>
+
+    <script id="category-filter-template" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
+
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="content-block clearfix" data-category="{{category}}" data-date="{{pubDate}}">
+        <img class="section-image" / src="{{img}}">
+        <header>
+          <h1 class="section-title">{{ttl}}</h1>
+          <time data-date={{pubDate}} datetime="{{pubDate}}">{{publishStatus}}</time>
+        </header>
+        <section class="section-body">{{{bdy}}}</section>
+        <a href="#" class="read-on clearfix">Read On</a>
+      </article>
+    </script>
+
   </head>
 
   <body>
@@ -29,31 +50,20 @@
 
       <main>
         <section id="articles" class="articles tab-content">
-
           <div>
             <ul id="filters" class="filters">
               <li>
-                <select id="date-filter" class="date-filter">
+                <select id="date-filter" class="date-filter filter">
                   <option value="">-- Filter by Years --</option>
                 </select>
               </li>
               <li>
-                <select id="category-filter" class='category-filter'>;
+                <select id="category-filter" class='category-filter filter'>;
                   <option value="">-- Filter by Categories --</option>
                 </select>
               </li>
             </ul>
           </div>
-
-          <article class="template content-block" data-category="" data-date="">
-            <img class="section-image" />
-            <header>
-              <h1 class="section-title">Title</h1>
-              <p data-date="" class="section-date">Publish Time</p>
-            </header>
-            <p class="section-body"></p>
-            <a href="#" class="read-on">Read On</a>
-          </article>
         </section>
 
         <section id="about" class="tab-content about">
@@ -71,6 +81,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/portfolio/localPortfolioData.js" type="text/javascript"></script>
     <script src="js/portfolio/articles.js" type="text/javascript"></script>

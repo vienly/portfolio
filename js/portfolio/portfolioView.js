@@ -1,27 +1,6 @@
 // Configure a view object, to hold all our functions for dynamic updates and article-related event handlers.
 var portfolioView = {};
 
-portfolioView.populateFilters = function() {
-  $('article').each(function() {
-    if (!$(this).hasClass('template')) {
-
-      var val = $(this).find('.section-date').data('date');
-      val = new Date(val);
-      val = val.getFullYear();
-      var optionTag = '<option value="' + val + '">' + val + '</option>';
-      if ($('#date-filter option[value="' + val + '"]').length === 0) {
-        $('#date-filter').append(optionTag);
-      }
-
-      val = $(this).attr('data-category');
-      optionTag = '<option value="' + val + '">' + val + '</option>';
-      if ($('#category-filter option[value="' + val + '"]').length === 0) {
-        $('#category-filter').append(optionTag);
-      }
-    }
-  });
-};
-
 portfolioView.handleDateFilter = function() {
   $('#date-filter').on('change', function() {
     if ($(this).val()) {
@@ -39,7 +18,6 @@ portfolioView.handleDateFilter = function() {
     } else {
       $('article').not('.template').fadeIn();
     }
-    // Reset the category-filter:
     $('#category-filter').val('');
   });
 };
@@ -56,9 +34,6 @@ portfolioView.handleCategoryFilter = function() {
         }
       });
     } else {
-      // TODO: Otherwise, we should:
-      //       1. Show all the articles,
-      //       2. Except the one article we are using as a template.
       $('article').not('.template').fadeIn();
     }
     $('#date-filter').val('');
@@ -82,21 +57,20 @@ portfolioView.handleMainNav = function() {
     });
   });
 
-  // Let's now trigger a click on the first .tab element, to set up the page:
   $('nav .tab:first').click();
 };
 
 
 
 portfolioView.setTeasers = function() {
-  $('.content-block .section-body *:nth-of-type(n+2)').hide();
+  $('.section-body *:nth-of-type(n+2)').hide();
 
   $('article').on('click', '.read-on', function(e) {
     e.preventDefault();
-    $self = $(this);
+    var $self = $(this);
     if ($(this).hasClass('show-less')) {
-      $self.parent().find('.section-body *:nth-of-type(n+2)').slideUp();
       $self.toggleClass('show-less');
+      $self.parent().find('.section-body *:nth-of-type(n+2)').slideUp();
       $self.text('Read On');
     } else {
       $self.toggleClass('show-less');
@@ -107,7 +81,6 @@ portfolioView.setTeasers = function() {
 };
 
 $(document).ready(function () {
-  portfolioView.populateFilters();
   portfolioView.handleDateFilter();
   portfolioView.handleCategoryFilter();
   portfolioView.handleMainNav();

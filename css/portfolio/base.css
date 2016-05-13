@@ -1,9 +1,9 @@
 * {
   /*font-family: 'Fanwood Text', serif;*/
-  font-family: 'Esteban', serif;
+  font-family: 'Source Sans Pro', sans-serif;
   /*font-family: 'Alegreya Sans', sans-serif;*/
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.5rem;
   color: black;
   margin: 0;
   padding: 0;
@@ -12,30 +12,28 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.wrapper {
-  transition: all 0.5s ease-out;
-  width: 90vw;
+.clearfix {
+  clear: both;
 }
 
 p, img {
   max-width: 100%;
 }
 
-.articles h1, .section-date{
+.articles h1, time{
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
 
 .articles h1 {
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
 
-.section-date {
-  font-size: .75em;
+time {
+  font-size: .75rem;
   text-decoration: underline;
 }
-
 
 select {
   border: 1px solid black;
