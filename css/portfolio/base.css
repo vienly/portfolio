@@ -3,13 +3,17 @@
   font-family: 'Source Sans Pro', sans-serif;
   /*font-family: 'Alegreya Sans', sans-serif;*/
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   color: black;
   margin: 0;
   padding: 0;
   list-style: none;
   text-decoration: none;
   -webkit-font-smoothing: antialiased;
+}
+
+p {
+  /*font-weight: 300;*/
 }
 
 .clearfix {
