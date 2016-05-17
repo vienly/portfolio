@@ -31,45 +31,56 @@ Article.fetchAll = function() {
     console.log('localStorage etag value is ' + JSON.parse(localStorage.eTagValue));
 
     $.ajax({
-      type: 'HEAD',
       url: 'data/portfolioData.json',
+      type: 'HEAD',
       success: function(data, message, xhr) {
         newETag = xhr.getResponseHeader('eTag');
         console.log('new eTag is ' + newETag);
         console.log('stored etag is ' + JSON.parse(localStorage.eTagValue));
 
         if (newETag === JSON.parse(localStorage.eTagValue)) {
-          console.log('no change in database');
+          console.log('no change');
           Article.loadAll(JSON.parse(localStorage.portfolioData));
           portfolioView.initIndexPage();
 
         } else {
-          $.getJSON('data/portfolioData.json', function(jsondata) {
-            Article.loadAll(jsondata);
-            localStorage.eTagValue = JSON.stringify(newETag);
-            localStorage.portfolioData = JSON.stringify(jsondata);
-            console.log('loading new data');
-            portfolioView.initIndexPage();
+          $.ajax({
+            url: 'data/portfolioData.json',
+            dataType: 'JSON',
+            success: function(data, message, xhr) {
+              Article.loadAll(data);
+              localStorage.eTagValue = JSON.stringify(newETag);
+              localStorage.portfolioData = JSON.stringify(data);
+              console.log('loading new data');
+              portfolioView.initIndexPage();
+            }
           });
+
+          // different syntax for experimenting
+          // $.getJSON('data/portfolioData.json', function(jsondata) {
+          //   Article.loadAll(jsondata);
+          //   localStorage.eTagValue = JSON.stringify(newETag);
+          //   localStorage.portfolioData = JSON.stringify(jsondata);
+          //   console.log('loading new data');
+          //   portfolioView.initIndexPage();
+          // });
         }
       }
     });
-
   } else {
     $.ajax({
       url: 'data/portfolioData.json',
+      dataType: 'JSON',
       success: function(data, message, xhr) {
         var eTag = xhr.getResponseHeader('eTag');
-        console.log(message, eTag);
         localStorage.eTagValue = JSON.stringify(eTag);
         console.log('saved new eTag');
 
         Article.loadAll(data);
         console.log('loaded data');
         localStorage.portfolioData = JSON.stringify(data);
-        alert( "Load was performed." );
-
         portfolioView.initIndexPage();
+        console.log('Loaded and displayed new Data');
       }
     });
   }

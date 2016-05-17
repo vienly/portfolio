@@ -78,11 +78,7 @@ portfolioView.setTeasers = function() {
   });
 };
 
-$(document).ready(function() {
-});
-
 portfolioView.initIndexPage = function() {
-
   Article.all.forEach(function(a){
     $('#articles').append(a.toHtml($('#article-template')));
     $('#date-filter').append(a.toHtml($('#date-filter-template')));
