@@ -1,54 +1,76 @@
-var articles = [];
-
 function Article (opts) {
-  this.ttl = opts.ttl;
-  this.category = opts.category;
-  this.author = opts.author;
-  this.authorUrl = opts.authorUrl;
-  this.img = opts.img;
-  this.pubDate = opts.pubDate;
-  this.bdy = opts.bdy;
-  this.year = opts.year;
+  for (keys in opts) {
+    this[keys] = opts[keys];
+  }
 }
 
-Article.prototype.toHtml = function() {
+Article.all = [];
 
-  // this.year = new Date(this.pubDate).getFullYear();
-  // console.log(this.year);
-  this.daysAgo = parseInt((new Date() - new Date(this.pubDate))/60/60/24/1000);
+Article.prototype.toHtml = function(scriptTemplateId) {
+  var template = Handlebars.compile((scriptTemplateId).html());
+
+  this.daysAgo = parseInt((new Date() - new Date(this.pubDate)) / 60 / 60 / 24 / 1000);
   this.publishStatus = this.pubDate ? 'published about ' + this.daysAgo + ' days ago' : '(draft)';
-  var $source = $('#article-template').html();
-  var template = Handlebars.compile($source);
+
   return template(this);
 };
 
-Article.prototype.populateDateFilter = function(){
-  var $source = $('#date-filter-template').html();
-  var template = Handlebars.compile($source);
-  return template(this);
-};
-
-Article.prototype.populateCategoryFilter = function(){
-  var $source = $('#category-filter-template').html();
-  var template = Handlebars.compile($source);
-  return template(this);
-};
-
-myPortfolioData.sort(function(a,b) {
-  return (new Date(b.pubDate)) - (new Date(a.pubDate));
-});
-
-myPortfolioData.forEach(function(ele) {
-  articles.push(new Article(ele));
-});
-
-articles.forEach(function(a){
-  $('#articles').append(a.toHtml());
-  $('#date-filter').append(a.populateDateFilter());
-  $('#category-filter').append(a.populateCategoryFilter());
-
-  $('.filter option').each(function(){
-    $(this).siblings('[value="' + this.value + '"]').remove();
+Article.loadAll = function(inputData) {
+  inputData.sort(function(a, b) {
+    return (new Date(b.pubDate)) - (new Date(a.pubDate));
   });
+  inputData.forEach(function(ele) {
+    Article.all.push(new Article(ele));
+  });
+};
 
-});
+Article.fetchAll = function() {
+  if (localStorage.eTagValue) {
+    var newETag;
+
+    console.log('localStorage etag value is ' + JSON.parse(localStorage.eTagValue));
+
+    $.ajax({
+      type: 'HEAD',
+      url: 'data/portfolioData.json',
+      success: function(data, message, xhr) {
+        newETag = xhr.getResponseHeader('eTag');
+        console.log('new eTag is ' + newETag);
+        console.log('stored etag is ' + JSON.parse(localStorage.eTagValue));
+
+        if (newETag === JSON.parse(localStorage.eTagValue)) {
+          console.log('no change in database');
+          Article.loadAll(JSON.parse(localStorage.portfolioData));
+          portfolioView.initIndexPage();
+
+        } else {
+          $.getJSON('data/portfolioData.json', function(jsondata) {
+            Article.loadAll(jsondata);
+            localStorage.eTagValue = JSON.stringify(newETag);
+            localStorage.portfolioData = JSON.stringify(jsondata);
+            console.log('loading new data');
+            portfolioView.initIndexPage();
+          });
+        }
+      }
+    });
+
+  } else {
+    $.ajax({
+      url: 'data/portfolioData.json',
+      success: function(data, message, xhr) {
+        var eTag = xhr.getResponseHeader('eTag');
+        console.log(message, eTag);
+        localStorage.eTagValue = JSON.stringify(eTag);
+        console.log('saved new eTag');
+
+        Article.loadAll(data);
+        console.log('loaded data');
+        localStorage.portfolioData = JSON.stringify(data);
+        alert( "Load was performed." );
+
+        portfolioView.initIndexPage();
+      }
+    });
+  }
+};
