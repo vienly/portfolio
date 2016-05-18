@@ -81,7 +81,7 @@
 
   portfolioView.initIndexPage = function() {
     Article.all.forEach(function(a){
-      $('#articles').append(a.toHtml($('#article-template')));
+      $('#article-container').append(a.toHtml($('#article-template')));
       $('#date-filter').append(a.toHtml($('#date-filter-template')));
       $('#category-filter').append(a.toHtml($('#category-filter-template')));
 
