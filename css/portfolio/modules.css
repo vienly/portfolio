@@ -203,3 +203,18 @@ nav[role=navigation] li a:hover {
     margin-bottom: .5em;
   }
 }
+
+.latest-article-name, .latest-article-date {
+  color: red;
+}
+
+footer {
+  margin: .5em;
+}
+
+.footnote, .latest-article-name, .latest-article-date {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: .66rem;
+}

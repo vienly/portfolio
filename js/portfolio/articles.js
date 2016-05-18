@@ -1,87 +1,76 @@
-function Article (opts) {
-  for (keys in opts) {
-    this[keys] = opts[keys];
+(function(module) {
+  function Article (opts) {
+    for (keys in opts) {
+      this[keys] = opts[keys];
+    }
   }
-}
 
-Article.all = [];
+  Article.all = [];
 
-Article.prototype.toHtml = function(scriptTemplateId) {
-  var template = Handlebars.compile((scriptTemplateId).html());
+  Article.prototype.toHtml = function(scriptTemplateId) {
+    var template = Handlebars.compile((scriptTemplateId).html());
 
-  this.daysAgo = parseInt((new Date() - new Date(this.pubDate)) / 60 / 60 / 24 / 1000);
-  this.publishStatus = this.pubDate ? 'published about ' + this.daysAgo + ' days ago' : '(draft)';
+    this.daysAgo = parseInt((new Date() - new Date(this.pubDate)) / 60 / 60 / 24 / 1000);
+    this.publishStatus = this.pubDate ? 'published about ' + this.daysAgo + ' days ago' : '(draft)';
 
-  return template(this);
-};
+    return template(this);
+  };
 
-Article.loadAll = function(inputData) {
-  inputData.sort(function(a, b) {
-    return (new Date(b.pubDate)) - (new Date(a.pubDate));
-  });
-  inputData.forEach(function(ele) {
-    Article.all.push(new Article(ele));
-  });
-};
+  Article.loadAll = function(inputData) {
+    inputData.sort(function(a, b) {
+      return (new Date(b.pubDate)) - (new Date(a.pubDate));
+    });
 
-Article.fetchAll = function() {
-  if (localStorage.eTagValue) {
-    var newETag;
+    Article.all = inputData.map(function(item) {
+      return new Article(item);
+    });
+  };
 
-    console.log('localStorage etag value is ' + JSON.parse(localStorage.eTagValue));
+  Article.getAll = function(next) {
+    $.getJSON('/data/portfolioData.json', function(responseData) {
+      Article.loadAll(responseData);
+      localStorage.portfolioData = JSON.stringify(responseData);
+      next();
+    });
+  };
 
-    $.ajax({
-      url: 'data/portfolioData.json',
-      type: 'HEAD',
-      success: function(data, message, xhr) {
-        newETag = xhr.getResponseHeader('eTag');
-        console.log('new eTag is ' + newETag);
-        console.log('stored etag is ' + JSON.parse(localStorage.eTagValue));
-
-        if (newETag === JSON.parse(localStorage.eTagValue)) {
-          console.log('no change');
-          Article.loadAll(JSON.parse(localStorage.portfolioData));
-          portfolioView.initIndexPage();
-
-        } else {
-          $.ajax({
-            url: 'data/portfolioData.json',
-            dataType: 'JSON',
-            success: function(data, message, xhr) {
-              Article.loadAll(data);
-              localStorage.eTagValue = JSON.stringify(newETag);
-              localStorage.portfolioData = JSON.stringify(data);
-              console.log('loading new data');
-              portfolioView.initIndexPage();
-            }
-          });
-
-          // different syntax for experimenting
-          // $.getJSON('data/portfolioData.json', function(jsondata) {
-          //   Article.loadAll(jsondata);
-          //   localStorage.eTagValue = JSON.stringify(newETag);
-          //   localStorage.portfolioData = JSON.stringify(jsondata);
-          //   console.log('loading new data');
-          //   portfolioView.initIndexPage();
-          // });
+  Article.fetchAll = function(next) {
+    if (localStorage.portfolioData) {
+      $.ajax({
+        type: 'HEAD',
+        url: '/data/portfolioData.json',
+        success: function(data, message, xhr) {
+          var eTag = xhr.getResponseHeader('eTag');
+          if (!localStorage.eTag || eTag !== localStorage.eTag) {
+            localStorage.eTag = eTag;
+            Article.getAll(next);
+          } else {
+            Article.loadAll(JSON.parse(localStorage.portfolioData));
+            next();
+          }
         }
-      }
-    });
-  } else {
-    $.ajax({
-      url: 'data/portfolioData.json',
-      dataType: 'JSON',
-      success: function(data, message, xhr) {
-        var eTag = xhr.getResponseHeader('eTag');
-        localStorage.eTagValue = JSON.stringify(eTag);
-        console.log('saved new eTag');
+      });
+    } else {
+      Article.getAll(next);
+    }
+  };
 
-        Article.loadAll(data);
-        console.log('loaded data');
-        localStorage.portfolioData = JSON.stringify(data);
-        portfolioView.initIndexPage();
-        console.log('Loaded and displayed new Data');
+  Article.checkLatestProject = function() {
+    return Article.all.map(function(article) {
+      return {
+        articleName: article.ttl,
+        articleDate: article.pubDate,
+      };
+    })
+    .reduce(function(a, b) {
+      if (a) {
+        if (Date.parse(b.articleDate) > Date.parse(a.articleDate)) {
+          return b;
+        }
+        else return a;
       }
     });
-  }
-};
+  };
+  
+  module.Article = Article;
+}(window));

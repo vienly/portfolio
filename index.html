@@ -12,6 +12,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/index/style.css"> -->
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Fanwood+Text|Esteban|Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
 
+    <script id="latest-project-template" type="text/x-handlebars-template">
+      <div class="footnote">Latest Project is <a href="#"><span class="latest-article-name">{{articleName}}</span></a> published on <span class="latest-article-date">{{articleDate}}</span></div>
+    </script>
+
     <script id="date-filter-template" type="text/x-handlebars-template">
       <option value="{{year}}">{{year}}</option>
     </script>
@@ -80,6 +84,10 @@
 
         <section id="contact" class="contact">
         </section>
+
+        <footer>
+          <div class="latest-project"></div>
+        </footer>
       </main>
     </div>
 
@@ -90,10 +98,7 @@
     <script src="js/portfolio/articles.js" type="text/javascript"></script>
     <script src="js/portfolio/portfolioView.js" type="text/javascript"></script>
     <script>
-      Article.fetchAll();
-      // Article.loadAll(myPortfolioData);
-      // portfolioView.initIndexPage();
-
+      window.Article.fetchAll(portfolioView.initIndexPage);
     </script>
   </body>
 </html>
