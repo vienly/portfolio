@@ -35,11 +35,11 @@ nav[role=navigation] {
   clear: both;
   overflow: hidden;
 
-  width: 16em;
+  width: 14em;
   height: 100%;
   position: absolute;
   top: 0;
-  left: -18em;
+  left: -16em;
 }
 
 nav[role=navigation] ul {
