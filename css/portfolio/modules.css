@@ -19,13 +19,15 @@ a.menu-link button {
   text-transform: uppercase;
   font-weight: 700;
   padding: .4em;
-  margin: .4em;
+  /*margin: .4em;*/
   background-color: rgba(0, 0, 0 , 0.8);
   border: none;
-}
-
-a.menu-link button {
+  position: absolute;
+  left: -2em;
   outline: none;
+  width: 5rem;
+  /*height: 5vw;
+  width: 5vw;*/
 }
 
 nav[role=navigation] {
@@ -33,11 +35,11 @@ nav[role=navigation] {
   clear: both;
   overflow: hidden;
 
-  width: 16em;
+  width: 14em;
   height: 100%;
   position: absolute;
   top: 0;
-  left: -18em;
+  left: -16em;
 }
 
 nav[role=navigation] ul {
@@ -217,4 +219,17 @@ footer {
   font-weight: 400;
   text-transform: uppercase;
   font-size: .66rem;
+}
+
+.three-column-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.three-column-wrapper div {
+  margin: 1em;
+}
+
+.three-column-wrapper p {
+  text-align: justify;
 }
