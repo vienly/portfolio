@@ -5,8 +5,8 @@
     if ($('#article-container section').length === 0) {
       Article.fetchAll(portfolioView.initIndexPage);
     }
-    $('#about').fadeOut();
-    $('#articles').fadeIn();
+    $('#articles').fadeIn().siblings().fadeOut();
+    // $('#articles').fadeIn();
   };
 
   module.articleController = articleController;
