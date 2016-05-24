@@ -233,3 +233,14 @@ footer {
 .three-column-wrapper p {
   text-align: justify;
 }
+
+.git-repo h1 {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+
+}
+
+.git-repo li {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
