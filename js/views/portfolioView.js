@@ -42,20 +42,9 @@
   };
 
   portfolioView.handleMainNav = function() {
-
     $('nav').on('click', '.tab', function(e) {
-      // e.preventDefault();
       $('.tab').removeClass('active-page');
       $(this).addClass('active-page');
-      // $('.tab-content').hide();
-
-      // var tabName = $(this).data('content');
-
-      // $('.tab-content').each( function () {
-      //   if ($(this).is('#' + tabName)) {
-      //     $(this).fadeIn();
-      //   }
-      // });
     });
   };
 
@@ -82,10 +71,6 @@
       $('#article-container').append(a.toHtml($('#article-template')));
       $('#date-filter').append(a.toHtml($('#date-filter-template')));
       $('#category-filter').append(a.toHtml($('#category-filter-template')));
-
-      // if($('#date-filter option:contains("'+ a.date + '")').length === 0) {
-      //   $('#date-filter').append(a.toHtml($('#date-filter-template')));
-      // };
 
       $('.filter option').each(function(){
         $(this).siblings('[value="' + this.value + '"]').remove();

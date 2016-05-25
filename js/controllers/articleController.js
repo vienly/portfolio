@@ -6,7 +6,6 @@
       Article.fetchAll(portfolioView.initIndexPage);
     }
     $('#articles').fadeIn().siblings().fadeOut();
-    // $('#articles').fadeIn();
   };
 
   module.articleController = articleController;
