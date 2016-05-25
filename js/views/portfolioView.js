@@ -80,7 +80,6 @@
     var template = Handlebars.compile($('#latest-project-template').html());
     $('.latest-project').append(template(Article.checkLatestProject()));
 
-
     portfolioView.handleDateFilter();
     portfolioView.handleCategoryFilter();
     portfolioView.handleMainNav();
