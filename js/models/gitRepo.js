@@ -8,7 +8,7 @@
         '?per_page=15' +
         '&sort=updated')
         .done(function(data) {
-          repos.all = data;
+          gitRepos.all = data;
         }).done(callback);
   };
 
