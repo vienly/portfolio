@@ -4,16 +4,12 @@
   gitRepos.all = [];
 
   gitRepos.requestRepos = function(callback) {
-    $.ajax({
-      url: 'https://api.github.com/users/' + vienGitToken.user + '/repos' + '?per_page=10' + '&sort=updated' + '&since=2016-05-09T00:00:01Z',
-      type: 'GET',
-      headers: {'Authorization':'token ' + vienGitToken.token},
-      success: function(data, message, xhr) {
-        console.log(data);
-        gitRepos.all = data;
-        callback();
-      }
-    });
+    $.get('/github/users/vienly/repos' +
+        '?per_page=15' +
+        '&sort=updated')
+        .done(function(data) {
+          repos.all = data;
+        }).done(callback);
   };
 
   gitRepos.with = function(attr) {
